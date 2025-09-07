@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  dbrimacdev:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=dbrimacdev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - db_challenge_rimac_network
+
+volumes:
+  postgres_data:
+
+networks:
+  db_challenge_rimac_network:
+    driver: bridge
